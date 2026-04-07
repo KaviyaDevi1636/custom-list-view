@@ -1,0 +1,21 @@
+public class MainActivity extends AppCompatActivity {
+
+    ListView listView;
+    ArrayList<Contact> contacts;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        listView = findViewById(R.id.listView);
+
+        contacts = new ArrayList<>();
+        contacts.add(new Contact("Elakkiya", "9876543210", R.drawable.img1));
+        contacts.add(new Contact("Kaviya", "9123456780", R.drawable.img2));
+        contacts.add(new Contact("Priya", "9988776655", R.drawable.img3));
+
+        CustomAdapter adapter = new CustomAdapter(this, contacts);
+        listView.setAdapter(adapter);
+    }
+}
