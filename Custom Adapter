@@ -1,0 +1,31 @@
+public class CustomAdapter extends ArrayAdapter<Contact> {
+
+    Context context;
+    ArrayList<Contact> contacts;
+
+    public CustomAdapter(Context context, ArrayList<Contact> contacts) {
+        super(context, R.layout.list_item, contacts);
+        this.context = context;
+        this.contacts = contacts;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+        }
+
+        ImageView image = convertView.findViewById(R.id.image);
+        TextView name = convertView.findViewById(R.id.name);
+        TextView phone = convertView.findViewById(R.id.phone);
+
+        Contact contact = contacts.get(position);
+
+        image.setImageResource(contact.image);
+        name.setText(contact.name);
+        phone.setText(contact.phone);
+
+        return convertView;
+    }
+}
